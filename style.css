@@ -4,6 +4,10 @@
 	margin: 0;
 }
 
+*::selection {
+	background-color: yellow;
+}
+
 .header {
 	text-align: center;
 	font-size: 500%;
