@@ -25,6 +25,10 @@ img {
 	border-radius: 7px;
 }
 
+img:hover {
+	width: 110%;
+}
+
 a {
 	text-decoration-color: black;
 	color: black;
@@ -51,10 +55,24 @@ a {
 .navigation {
 	background-color: #378aae;
 }
+.navigation li:hover {
+	background-color: #15ef40;
+	animation-name: animate_navigation_color;
+	animation-duration: 4s;
+}
+
+@keyframes animate_navigation_color {
+	from {background-color: #378aae;}
+	to {background-color: #15ef40;}
+}
 
 .navigation li,
 .navigation a {
 	display: inline-block;
+}
+
+.navigation li {
+	border-radius: 7px;
 }
 
 .navigation a {
