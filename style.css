@@ -46,7 +46,7 @@ a {
 .box,
 .navigation li,
 .navigation a,
-.reviews {
+.info {
 	vertical-align: middle;
 	display: inline-block;
 	font-size: 1.6em;
@@ -84,7 +84,7 @@ a {
 	padding: 2vmax;
 }
 
-.reviews {
+.info {
 	width: 90%;
 	margin: 5%;
 	background-color: #6ebcde;
