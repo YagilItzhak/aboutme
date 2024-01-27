@@ -1,126 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yagil Itzhak's Resume</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .container { width: 80%; margin: auto; }
-        header { text-align: center; }
-        section { margin-bottom: 20px; }
-        .section-title { color: #333399; font-size: 22px; text-decoration: underline; }
-        .details { margin-left: 20px; }
-        .details p { margin: 5px 0; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Yagil Itzhak</h1>
-            <p>Software Developer</p>
-            <p>Gilon, North District, Israel</p>
-            <p>Email: anagrama.yagil@gmail.com | Phone: +972523936252</p>
-            <p>Website: https://yagilitzhak.github.io/aboutme/</p>
-        </header>
-        <section>
-            <h2 class="section-title">About</h2>
-            <p>
-                Highly motivated software developer with a passion for learning and innovation.<br>
-                Dedicated to crafting efficient and user-friendly applications across the full-stack.<br>
-                Driven by challenges and eager to leverage my expertise in low-level programming, cybersecurity, and performance optimization to contribute to a tech-driven environment.
-            </p>
-        </section>
-        <section>
-            <h2 class="section-title">Experience</h2>
-            <div class="details">
-                <p><strong>Shift Manager & Security Patrol</strong>, Gilon (Aug 2023 · 1 month)</p>
-                <p><strong>Coach</strong>, Private (Feb 2023 - Aug 2023)</p>
-                <p>As a communication assistant for an autistic individual, my role involves understanding their unique communication style, building trust, and using visual aids to help them express themselves. It's a rewarding job, seeing the progress they make and knowing I'm helping them reach their full potential. It requires empathy, creativity, and strong communication skills.</p>
-                <p><strong>Tutor</strong>, Self-employed (Mar 2023 - Jun 2023)</p>
-                <p>Helping a student year above me who is studying practical software engineering in the final project.
-                    Especially guiding with debugging and how to find good documentation.
-                    The project is for the air force.</p>
-                <p><strong>Attendant</strong>, Promarket (Aug 2022)</p>
-                <p>I presented Raphael's systems at the event.</p>
-            </div>
-        </section>
-        <section>
-            <h2 class="section-title">Projects</h2>
-            <p><strong>Clean Patrol</strong> (Oct 2023 - current)<p>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+        <title>Yagil Itzhak</title>
+    </head>
+    <body>
+        <ul class="navigation">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./resume.html">Resume</a></li>
+            <li><a href="https://www.linkedin.com/in/yagil-itzhak">LinkedIn</a></li>
+        </ul>
+        <h1 class="header">Home</h1>
+        
+        <div class="box">
+            <div class="content">
+                <h2>About</h2>
                 <p>
-                    The system will allow users to plan patrols in the best way according to the environmental conditions according to geographic data and the number of units that will perform the patrol.
-                    <ul>
-                        <li>Designed and developed a patrol planning system using geographic data and environmental conditions.</li>
-                        <li>Implemented algorithms like A* and multilevel graph partitioning for efficient route optimization.</li>
-                        <li>Implementation of parallel programming to speed up the computations.</li>
-                        <li>Built a user-friendly interface using React, Typescript, and Leaflet for intuitive planning.</li>
-                        <li>Develop secure registration mechanism using SQL and C++, encrypting and salting.</li>
-                    </ul>
+                    Hello! I'm Yagil,
+                    a passionate Software Developer, from Israel.<br>
+                    With a journey marked by constant learning and growth, I have developed a diverse skill set in low-level and high-level programming.<br>
+                    My dedication to the craft stems from a deep-seated love for coding, coupled with an unwavering commitment to creating efficient, secure, and impactful software solutions.
                 </p>
-            <p><strong>Memory Scanner</strong>, (Jul 2023)</p>
-                <ul>
-                    <li>Created a tool for examining and manipulating program memory at runtime.</li>
-                    <li>Implemented functionalities like data search, filter and replacement.</li>
-                    <li>Used low-Level winAPI functionalities.</li>
-                </ul>
-                <strong>link:</strong>
-            <a href="https://github.com/YagilItzhak/MemoryScanner">https://github.com/YagilItzhak/MemoryScanner</a>
-            <p><strong>Website</strong>, (Jun 2023 - current)</p>
-            <p><strong>Online Writer</strong>, (Apr 2021 - Jul 2022)</p>
-            
-            <p>
-                As a final project for Magshimim, my team developed a BitTorrent-like file-sharing mechanism.
-                <ul>
-                    <li>Developed a file-sharing system using TCP hole punching.</li>
-                    <li>Implemented automatic data synchronization via AJAX.</li>
-                    <li>Created a user-friendly interface using React TypeScript.</li>
-                    <li>Developed a secure registration mechanism using SQL and Node.js, encrypting and salting.</li>
-                </ul>
-                <p>Other contributors: Neria Buri</p>
-            </p>
-        </section>
-        <section>
-            <h2 class="section-title">Education</h2>
-            <div class="details">
-                <p><strong>ORT Colleges</strong>, Associate's Degree in Practical Computer Software Engineering (2022-2024)</p>
-                <p><strong>Magshimim</strong>, National Cyber Education Program</p>
-                <p><strong>Kazir Misgav High School</strong></p>
             </div>
-        </section>
-        <section>
-            <h2 class="section-title">Achievements</h2>
-            <div class="details">
-                <p><strong>CTF Competition at Magshimim</strong>: Secured 5th place with my team in a challenging Capture The Flag competition, demonstrating skills in cybersecurity and problem-solving.</p>
+        </div>
+        <div class="box">
+            <div class="content">
+                <img src="./image.jpg" alt="profile picture" width="100px">
             </div>
-        </section>        
-        <section>
-            <h2 class="section-title">Skills</h2>
-            <div class="details">
-                <p>Operating Systems, Low-Level Programming, Full-Stack Development, Cybersecurity, Data Structures, SQL, Algorithms, C#, Node.js, Python, Git, Win API, TypeScript, Wireshark, C/C++, Web Development</p>
+        </div>
+        <div class="box">
+                <div class="content">
+                    <img src="./code_sample.png" alt="code sample" width="400px">
+                </div>
+        </div>
+        <div class="box">
+            <div class="content">
+                
+                <h2>Throughout my career, </h2>
+                <p>
+                    I've been driven by a relentless pursuit of knowledge and a commitment to excellence.<br>
+                    My experiences have shaped me into a well-rounded professional, capable of tackling complex challenges with a unique blend of technical expertise and practical insights.<br>
+                    As I continue to grow and evolve in this ever-changing field, my goal remains steadfast: to create impactful, secure, and efficient software solutions that make a difference.
+                </p>
             </div>
-        </section>
-        <section>
-            <h2 class="section-title">Volunteering</h2>
-            <div class="details">
-                <p><strong>Mentor</strong>, Cyber Education Center's "Magshimim" program (Currently)</p>
-                <p>I help last year students with their project in networking.</p>
-                <p><strong>Instructor's Assistant</strong>, Cyber Education Center's "Magshimim" program (Oct 2021 - Oct 2022)</p>
-                <p>I helped and consulted students in the "Magshimim" program to learn C programming, computer networking, and project design.</p>
+        </div>
+        
+
+        <div class="info">
+            <div class="content">
+                <h2>More information</h2>
+                <p>
+                    To learn more about me you can review my <a href="./resume.html"><u>resume</u> &#128188;</a> or to send me <a href="mailto:anagrama.yagil@gmail.com"> <u>email</u> &#128231;</a>, <br>
+                    <a href="tel:0523936252"><u>call</u> &#128241;</a> 
+                </p>
             </div>
-        </section>
-        <section>
-            <h2 class="section-title">Languages</h2>
-            <div class="details">
-                <p>Hebrew (Native), English (Full Professional Proficiency)</p>
-            </div>
-        </section>
-        <section>
-            <h2 class="section-title">Interests</h2>
-            <div class="details">
-                <p>Cyber Security, Networking, Low-Level Programming, Machine Learning</p>
-            </div>
-        </section>
-    </div>
-</body>
+        </div>
+
+        <div class="banner">
+            <p style="padding: 1%;">&copy Yagil Itzhak</p>
+        </div>
+    </body>
 </html>
