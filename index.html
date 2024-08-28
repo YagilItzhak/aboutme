@@ -1,64 +1,110 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="./favicon.ico" type="image/x-icon">
-        <title>Yagil Itzhak</title>
-    </head>
-    <body>
-        <ul class="navigation">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./resume.html">Resume</a></li>
-            <li><a href="https://www.linkedin.com/in/yagil-itzhak">LinkedIn</a></li>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <title>Yagil Itzhak - Software Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <nav class="navigation">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://www.linkedin.com/in/yagil-itzhak" target="_blank">LinkedIn</a></li>
         </ul>
-        <h1 class="header">Home</h1>
-        
-        <div class="box">
-            <div class="content">
-                <h2>About</h2>
-                <p>
-                    Hello! I'm Yagil,
-                    a passionate Software Developer, from Israel.<br>
-                    With a journey marked by constant learning and growth, I have developed a diverse skill set in low-level and high-level programming.<br>
-                    My dedication to the craft stems from a deep-seated love for coding, coupled with an unwavering commitment to creating efficient, secure, and impactful software solutions.
-                </p>
-            </div>
+    </nav>
+
+    <header class="header" id="home">
+        <div class="header-content">
+            <h1>Yagil Itzhak</h1>
+            <p>Passionate Software Developer | Full-Stack Enthusiast | Problem Solver</p>
+            <a href="#about" class="btn">Learn More</a>
         </div>
-        <div class="box">
-            <div class="content">
-                <img src="./image.jpg" alt="profile picture" width="100px">
-            </div>
+    </header>
+
+    <div id="threejs-background"></div>
+
+    <section class="about" id="about">
+        <div class="content">
+            <h2>About Me</h2>
+            <p>
+                I'm Yagil, a dedicated Software Developer from Israel with a passion for coding and a relentless pursuit of knowledge. My expertise spans from low-level programming to full-stack development, allowing me to create efficient, secure, and scalable software solutions.
+            </p>
+            <img src="./image.jpg" alt="Yagil Itzhak" class="profile-picture">
         </div>
-        <div class="box">
-                <div class="content">
-                    <img src="./code_sample.png" alt="code sample" width="400px">
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="content">
+            <h2>Highlighted Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <img src="./project1.png" alt="Project 1">
+                    <h3>HTMC Library</h3>
+                    <p>Developed a lightweight library for creating reusable web components with simple HTML-like syntax.</p>
+                    <a href="https://github.com/YagilItzhak/HTMC" target="_blank" class="btn">View on GitHub</a>
                 </div>
-        </div>
-        <div class="box">
-            <div class="content">
-                
-                <h2>Throughout my career, </h2>
-                <p>
-                    I've been driven by a relentless pursuit of knowledge and a commitment to excellence.<br>
-                    My experiences have shaped me into a well-rounded professional, capable of tackling complex challenges with a unique blend of technical expertise and practical insights.<br>
-                    As I continue to grow and evolve in this ever-changing field, my goal remains steadfast: to create impactful, secure, and efficient software solutions that make a difference.
-                </p>
+                <div class="project-item">
+                    <img src="./project2.png" alt="Project 2">
+                    <h3>Patrol Planning System</h3>
+                    <p>Designed and developed a system for planning patrol routes using geographic data and environmental conditions.</p>
+		    <b>Score: 97<b>
+                </div>
+                <div class="project-item">
+                    <img src="./project3.png" alt="Project 3">
+                    <h3>Assembly X86 Hangman</h3>
+                    <p>An hangman game wrtten in Assembly X86.</p>
+                    <a href="https://github.com/YagilItzhak/AssemblyHangmanX86" target="_blank" class="btn">View on GitHub</a>
+                </div>
             </div>
         </div>
-        
+    </section>
 
-        <div class="info">
-            <div class="content">
-                <h2>More information</h2>
-                <p>
-                    To learn more about me you can review my <a href="./resume.html"><u>resume</u> &#128188;</a> or to send me <a href="mailto:anagrama.yagil@gmail.com"> <u>email</u> &#128231;</a>, <br>
-                    <a href="tel:0523936252"><u>call</u> &#128241;</a> 
-                </p>
+    <section class="skills" id="skills">
+        <div class="content">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>Languages</h3>
+                    <p>C, C++, Python, JavaScript, TypeScript, Java</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Web Development</h3>
+                    <p>HTML, CSS, React, Node.js</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Systems & Security</h3>
+                    <p>Networking, Docker, K8S, cryptography, WinAPI</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Database Management</h3>
+                    <p>PostgreSQL, MySQL, Firebase, MongoDB</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="banner">
-            <p style="padding: 1%;">&copy Yagil Itzhak</p>
+    <section class="contact-info" id="contact">
+        <div class="content">
+            <h2>Contact Me</h2>
+            <p>Interested in working together? Feel free to reach out to me through any of the following methods:</p>
+	    <p><a href="mailto:anagrama.yagil@gmail.com">Email Me</a> | <a href="tel:0523936252">Call Me</a> | <a href="./resume.html">Read my resume</a></p>
         </div>
-    </body>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Yagil Itzhak. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
 </html>
