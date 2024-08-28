@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יגיל יצחק | מפתח תוכנה</title>
+    <script src="https://yagilitzhak.github.io/HTMC/index.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-500 text-white p-4">
+        <div class="container mx-auto">
+            <h1 class="text-2xl font-bold">יגיל יצחק</h1>
+            <p>מפתח תוכנה</p>
+            <nav>
+                <ul class="flex space-x-4 justify-end">
+                    <li><a href="#experience">ניסיון</a></li>
+                    <li><a href="#projects">פרויקטים</a></li>
+                    <li><a href="#education">השכלה</a></li>
+                    <li><a href="#skills">מיומנויות</a></li>
+                    <li><a href="#contact">יצירת קשר</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4">
+
+        <section id="experience" class="mb-8">
+            <h2 class="text-xl font-semibold">ניסיון רלוונטי</h2>
+            <htmc-define>
+                <component name="experience-item" attributes="title company date">
+                    <div class="mb-4">
+                        <h3 class="font-bold">${title}</h3>
+                        <p><strong>${company}</strong> - ${date}</p>
+                        <slot></slot>
+                    </div>
+                </component>
+            </htmc-define>
+
+            <experience-item title="מורה פרטי" company="עצמאי" date="מרץ 2023 - יוני 2023">
+                <ul>
+                    <li>עזרתי לסטודנט שנה מעלי בהנדסת תוכנה בפרויקט הגמר, במיוחד באיתור תקלות ומציאת תיעוד.</li>
+                    <li>הפרויקט היה עבור חיל האוויר</li>
+                </ul>
+            </experience-item>
+        </section>
+
+        <!-- פרויקטים -->
+        <section id="projects" class="mb-8">
+            <h2 class="text-xl font-semibold">פרויקטים</h2>
+            <htmc-define>
+                <component name="project-item" attributes="title date">
+                    <div class="mb-4">
+                        <h3 class="font-bold">${title}</h3>
+                        <p><em>${date}</em></p>
+                        <slot></slot>
+                    </div>
+                </component>
+            </htmc-define>
+
+            <htmc-define>
+                <component name="project-item-with-grade" attributes="title date grade">
+                    <div class="mb-4">
+                        <h3 class="font-bold">${title}</h3>
+                        <p><em>${date}</em></p>
+                        <slot></slot>
+                        <p><strong>ציון:</strong> ${grade}</p>
+                    </div>
+                </component>
+            </htmc-define>
+
+            <project-item title="HTMC" date="יוני 2024 - הווה">
+                <ul>
+                    <li>HTMC - ספרייה קלה ליצירת רכיבי ווב (web components) לשימוש עם תחביר פשוט כמו HTML רגיל.</li>
+                    <li>מיומנויות: JavaScript, TypeScript, בניית אתרים, רכיבי ווב.</li>
+                    <li>בניית אפליקציה דינמית של עמוד אחד (SPA) באמצעות HTMC.</li>
+                    <li><a href="https://github.com/YagilItzhak/HTMC">GitHub - YagilItzhak/HTMC</a></li>
+                </ul>
+            </project-item>
+
+            <project-item-with-grade title="מערכת סיורי אבטחה" date="אוקטובר 2023 - אוגוסט 2024" grade="97">
+                <p>עיצוב ופיתוח מערכת לתכנון סיורי אבטחה באמצעות נתונים גיאוגרפיים כחלק מהפרויקט הסופי ב-ORT
+                    ביאליק.</p>
+                <ul>
+                    <li>מימוש אלגוריתמים כמו A*, חלוקת גרף רב-רמתית, ובעיית הדוור הסיני לאופטימיזציה של מסלול יעיל.</li>
+                    <li>ניצול תכנות מקבילי להאצת החישובים.</li>
+                    <li>בניית ממשק ידידותי למשתמש באמצעות React, TypeScript, ו-Leaflet.</li>
+                    <li>פיתוח מנגנון הרשמה מאובטח באמצעות SQL ו-C++, הכולל הצפנה והמלחה.</li>
+                </ul>
+            </project-item-with-grade>
+
+            <project-item-with-grade title="חנות חיות מחמד" date="ספטמבר 2023" grade="100">
+                <p>פרויקט זה היה מטלה עבור אורט ביאליק שבו פיתחתי אפליקציית חנות לחיות מחמד מבוססת React.</p>
+                <ul>
+                    <li>מיומנויות: React.js, JavaScript, פיתוח ווב, GitLab.</li>
+                    <li><a href="https://gitlab.com/Yagil_Itzhak/react-pet-store">GitLab - Pet Store Project</a></li>
+                    </li>
+                </ul>
+            </project-item-with-grade>
+
+            <project-item title="סורק זיכרון" date="יולי 2023">
+                <ul>
+                    <li>יצרתי סורק זיכרון לבחינה וניתוח של זיכרון התוכנית בזמן ריצה.</li>
+                    <li>מיומנויות: C, תכנות ברמת נמוכה, C++, תכנות מונחה עצמים, Git, מערכות הפעלה, Win32 API.
+                    </li>
+                    <li><a href="https://github.com/YagilItzhak/MemoryScanner">GitHub -
+                            YagilItzhak/MemoryScanner</a>
+                    </li>
+                </ul>
+            </project-item>
+
+            <project-item title="מערכת אבטחה" date="אפריל 2024">
+                <ul>
+                    <li>פיתחתי מערכת אבטחה באמצעות בקר ESP32.</li>
+                    <li>מיומנויות: בקר ESP32, לקוח/שרת, בניית אתרים.</li>
+                </ul>
+            </project-item>
+
+            <project-item title="אתר אישי" date="יוני 2023">
+                <ul>
+                    <li>פיתוח אתר אישי באמצעות HTML, CSS, ו-Git.</li>
+                </ul>
+            </project-item>
+
+            <project-item title="כותב מקוון (פרויקט מגשימים)" date="אפריל 2021 - יולי 2022">
+                <ul>
+                    <li>כפרויקט סיום בתכנית מגשימים, הצוות שלי פיתח תוכנה דמוית docs עם מנגנון לטעינת קבצים דמוי
+                        BitTorrent.</li>
+                    <li>פיתחתי מערכת לשיתוף קבצים באמצעות TCP Hole Punching.</li>
+                    <li>מימשתי סנכרון נתונים אוטומטי עם Ajax.</li>
+                    <li>יצרתי ממשק משתמש ידידותי באמצעות React TypeScript.</li>
+                    <li>פיתחתי מנגנון הרשמה מאובטח באמצעות SQL ו-Node.js.</li>
+                </ul>
+            </project-item>
+        </section>
+
+        <!-- השכלה -->
+        <section id="education" class="mb-8">
+            <h2 class="text-xl font-semibold">השכלה</h2>
+            <htmc-define>
+                <component name="education-item" attributes="school degree date">
+                    <div class="mb-4">
+                        <h3 class="font-bold">${school}</h3>
+                        <p><strong>${degree}</strong></p>
+                        <p><em>${date}</em></p>
+                        <slot></slot>
+                    </div>
+                </component>
+            </htmc-define>
+
+            <education-item school="ORT ביאליק" degree="הנדסאי תוכנה" date="ספטמבר 2022 - מאי 2024">
+                <p><strong>ציון:</strong> פרויקט סיום - 95</p>
+            </education-item>
+
+            <education-item school="BSMCH" degree="מיישם ענן (מנהל DC)" date="יולי 2024 - אוגוסט 2024">
+                <p>מיקוד: חומרה, רשתות, קצה, שרתי Windows, Linux, קונטיינרים, CI/CD, אחסון, וירטואליזציה.</p>
+                <p>לא עברתי</p>
+            </education-item>
+
+            <education-item school="מגשימים" degree="מדעי המחשב"
+                date="תוכנית ההכשרה הלאומית הישראלית באבטחת מידע בזמן לימודי התיכון">
+                <ul>
+                    <li>הישג: השגתי מקום חמישי בתחרות ה-CTF הלאומית של התוכנית, שהדגימה כישורים חזקים באבטחת מידע ופתרון
+                        בעיות.</li>
+                </ul>
+            </education-item>
+
+            <education-item school="תיכון קציר משגב" degree="דיפלומה במדעי המחשב" date="ציון: 97">
+                <ul>
+                    <li>מיומנויות: מדעי המחשב, פיתוח אנדרואיד, Firebase, תכנות מונחה עצמים, Java, אבטחת RSA, רשתות.</li>
+                </ul>
+            </education-item>
+        </section>
+
+        <!-- מיומנויות -->
+        <section id="skills" class="mb-8">
+            <h2 class="text-xl font-semibold">מיומנויות</h2>
+            <ul>
+                <li>C, C++, Python, TypeScript</li>
+                <li>SQL, Node.js, React, WinAPI</li>
+                <li>תכנות ברמת נמוכה, אבטחת מידע</li>
+                <li>פיתוח פול סטאק, מבני נתונים, אלגוריתמים</li>
+                <li>מערכות הפעלה, פיתוח ווב</li>
+                <li>Docker, Kubernetes (K8s), SAN, NAS</li>
+            </ul>
+        </section>
+
+        <!-- יצירת קשר -->
+        <section id="contact" class="mb-8">
+            <h2 class="text-xl font-semibold">יצירת קשר</h2>
+            <p>אימייל: <a href="mailto:anagrama.yagil@gmail.com">anagrama.yagil@gmail.com</a></p>
+            <p>טלפון: +972523936252</p>
+            <p>אתר: <a href="https://yagilitzhak.github.io/aboutme/">yagilitzhak.github.io</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/yagil-itzhak">linkedin.com/in/yagil-itzhak</a></p>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4">
+        <p>&copy; 2024 יגיל יצחק. כל הזכויות שמורות.</p>
+    </footer>
+</body>
+
+</html>
