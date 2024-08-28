@@ -10,17 +10,28 @@
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav class="navigation">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://www.linkedin.com/in/yagil-itzhak" target="_blank">LinkedIn</a></li>
-        </ul>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home">YI</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://www.linkedin.com/in/yagil-itzhak" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
     </nav>
 
+    <!-- Header -->
     <header class="header" id="home">
         <div class="header-content">
             <h1>Yagil Itzhak</h1>
@@ -29,8 +40,10 @@
         </div>
     </header>
 
+    <!-- Three.js Canvas Container -->
     <div id="threejs-background"></div>
 
+    <!-- About Section -->
     <section class="about" id="about">
         <div class="content">
             <h2>About Me</h2>
@@ -56,55 +69,70 @@
                     <img src="./project2.png" alt="Project 2">
                     <h3>Patrol Planning System</h3>
                     <p>Designed and developed a system for planning patrol routes using geographic data and environmental conditions.</p>
-		    <b>Score: 97<b>
+                    <a href="https://github.com/YagilItzhak/PatrolSystem" target="_blank" class="btn">View on GitHub</a>
                 </div>
                 <div class="project-item">
                     <img src="./project3.png" alt="Project 3">
-                    <h3>Assembly X86 Hangman</h3>
-                    <p>An hangman game wrtten in Assembly X86.</p>
-                    <a href="https://github.com/YagilItzhak/AssemblyHangmanX86" target="_blank" class="btn">View on GitHub</a>
+                    <h3>Memory Scanner</h3>
+                    <p>Created a tool for examining and manipulating program memory at runtime, with a focus on low-level programming.</p>
+                    <a href="https://github.com/YagilItzhak/MemoryScanner" target="_blank" class="btn">View on GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Skills Section -->
     <section class="skills" id="skills">
         <div class="content">
             <h2>My Skills</h2>
             <div class="skills-grid">
                 <div class="skill-item">
                     <h3>Languages</h3>
-                    <p>C, C++, Python, JavaScript, TypeScript, Java</p>
+                    <p>C, C++, Python, JavaScript, TypeScript</p>
                 </div>
                 <div class="skill-item">
                     <h3>Web Development</h3>
-                    <p>HTML, CSS, JS & TS, React, Angular, Node.js</p>
+                    <p>HTML, CSS, React, Node.js</p>
                 </div>
                 <div class="skill-item">
                     <h3>Systems & Security</h3>
-                    <p>Networking, Docker, K8S, cryptography, WinAPI, CyberSecurity</p>
+                    <p>Docker, Kubernetes, Cybersecurity</p>
                 </div>
                 <div class="skill-item">
                     <h3>Database Management</h3>
-                    <p>PostgreSQL, MySQL, Firebase, MongoDB</p>
+                    <p>SQL, PostgreSQL, MySQL</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section class="contact-info" id="contact">
         <div class="content">
             <h2>Contact Me</h2>
             <p>Interested in working together? Feel free to reach out to me through any of the following methods:</p>
-	    <p><a href="mailto:anagrama.yagil@gmail.com">Email Me</a> | <a href="tel:0523936252">Call Me</a> | <a href="./resume.html">Read my resume</a></p>
+            <p><a href="mailto:anagrama.yagil@gmail.com">Email Me</a> | <a href="tel:0523936252">Call Me</a></p>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Yagil Itzhak. All Rights Reserved.</p>
     </footer>
 
+    <!-- Smooth Scrolling Script -->
     <script src="script.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('is-active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
