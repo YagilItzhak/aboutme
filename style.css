@@ -199,6 +199,7 @@ a:hover {
     border-radius: 8px;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    min-height: 300px; /* Consistent height for all project cards */
 }
 
 .project-item img {
@@ -221,81 +222,28 @@ a:hover {
     display: inline-block;
 }
 
-.articles {
-    padding: 4rem 0;
-    background-color: #f8f9fa;
-    margin: 2rem auto;
-    width: 80%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.articles h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    color: #333;
-}
-/* Articles Section */
-
-.article-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.article-item {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.article-item h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.article-item .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    background-color: #15ef40;
-    color: #333;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-}
-
-.article-item .btn:hover {
-    background-color: #3498db;
-}
-
 /* Honors & Achievements Section */
 .honors {
-    padding: 4rem 0;
-    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
     margin: 2rem auto;
     width: 80%;
+    background-color: #fff;
+    padding: 4rem 0;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-}
-
-.honors h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
 }
 
 .honor-item {
+    flex: 1;
     background-color: #f9f9f9;
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
+    min-height: 300px; /* Consistent height for honor cards */
 }
 
 .honor-item h3 {
@@ -337,6 +285,7 @@ a:hover {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    min-height: 300px; /* Consistent height for skill cards */
 }
 
 .skill-item h3 {
@@ -402,7 +351,7 @@ a:hover {
         width: 95%;
     }
 
-    .project-grid, .skills-grid {
+    .project-grid, .skills-grid, .honors {
         flex-direction: column;
     }
 
