@@ -3,6 +3,7 @@ let mouseX = 0, mouseY = 0, cameraX = 0, cameraY = 0;
 let starCount = 10000;  // Number of stars
 let raycaster = new THREE.Raycaster();  // For detecting mouse hover
 let mouse = new THREE.Vector2();  // Store mouse position
+let explodedStars = {};  // Store exploded stars with additional velocities for explosion
 
 function init() {
     setupScene();
@@ -84,15 +85,30 @@ function animate() {
 function updateStars() {
     for (let i = 0; i < starCount; i++) {
         let i3 = i * 3;
-        starPositions[i3 + 2] += starVelocities[i];  // Move stars along the Z-axis
 
-        // Reset stars that go too far in depth to simulate looping
-        if (starPositions[i3 + 2] > 1500) {
-            starPositions[i3 + 2] = -1500;
-            starPositions[i3] = (Math.random() - 0.5) * 6000;
-            starPositions[i3 + 1] = (Math.random() - 0.5) * 6000;
+        // If the star is not exploded, move it along the Z-axis (normal movement)
+        if (!explodedStars[i]) {
+            starPositions[i3 + 2] += starVelocities[i];  // Move stars along the Z-axis
+
+            // Reset stars that go too far in depth to simulate looping
+            if (starPositions[i3 + 2] > 1500) {
+                starPositions[i3 + 2] = -1500;
+                starPositions[i3] = (Math.random() - 0.5) * 6000;
+                starPositions[i3 + 1] = (Math.random() - 0.5) * 6000;
+            }
+        } else {
+            // If the star is exploded, apply explosion velocity
+            starPositions[i3] += explodedStars[i].vx;
+            starPositions[i3 + 1] += explodedStars[i].vy;
+            starPositions[i3 + 2] += explodedStars[i].vz;
+
+            // If the star moves too far away, reset it
+            if (Math.abs(starPositions[i3]) > 3000 || Math.abs(starPositions[i3 + 1]) > 3000 || Math.abs(starPositions[i3 + 2]) > 3000) {
+                resetStar(i);
+            }
         }
     }
+
     stars.geometry.attributes.position.needsUpdate = true;  // Inform Three.js of position changes
 }
 
@@ -119,19 +135,28 @@ function checkForStarHover() {
     }
 }
 
-// Explode a star by moving it outward and fading it
+// Explode a star by giving it a random velocity
 function explodeStar(index) {
+    if (!explodedStars[index]) {
+        let i3 = index * 3;
+        // Generate random velocities for the explosion
+        explodedStars[index] = {
+            vx: (Math.random() - 0.5) * 20,  // Random X velocity
+            vy: (Math.random() - 0.5) * 20,  // Random Y velocity
+            vz: (Math.random() - 0.5) * 20   // Random Z velocity
+        };
+    }
+}
+
+// Reset a star to its initial state
+function resetStar(index) {
     let i3 = index * 3;
-    // Move the star outward in a random direction
-    starPositions[i3] += (Math.random() - 0.5) * 100;
-    starPositions[i3 + 1] += (Math.random() - 0.5) * 100;
-    starPositions[i3 + 2] += (Math.random() - 0.5) * 100;
+    starPositions[i3] = (Math.random() - 0.5) * 6000;
+    starPositions[i3 + 1] = (Math.random() - 0.5) * 6000;
+    starPositions[i3 + 2] = -1500;  // Place it at the far back to give an illusion of it coming back from the distance
 
-    // Gradually reduce opacity for an explosion effect
-    starMaterial.opacity = Math.max(0, starMaterial.opacity - 0.02);
-
-    // Inform Three.js of the position changes
-    stars.geometry.attributes.position.needsUpdate = true;
+    // Remove it from the exploded stars list
+    delete explodedStars[index];
 }
 
 // Update mouse coordinates for raycasting
