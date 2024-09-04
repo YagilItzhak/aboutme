@@ -157,7 +157,7 @@ a:hover {
 }
 
 /* About Section */
-.about, .projects, .skills, .contact-info {
+.about, .projects, .articles, .honors, .skills, .contact-info {
     padding: 4rem 0;
     background-color: #fff;
     margin: 2rem auto;
@@ -172,7 +172,7 @@ a:hover {
     text-align: center;
 }
 
-.about p, .projects p, .skills p, .contact-info p {
+.about p, .projects p, .articles p, .honors p, .skills p, .contact-info p {
     font-size: 1.2rem;
     line-height: 1.8;
     text-align: center;
