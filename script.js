@@ -1,9 +1,11 @@
 let scene, camera, renderer, stars, starGeometry, starMaterial, starPositions, starVelocities;
+let starColors, originalColors;  // Store current and original colors
 let mouseX = 0, mouseY = 0, cameraX = 0, cameraY = 0;
-let starCount = 10000;  // Number of stars
-let raycaster = new THREE.Raycaster();  // For detecting mouse hover
-let mouse = new THREE.Vector2();  // Store mouse position
-let explodedStars = {};  // Store exploded stars with additional velocities for explosion
+let starCount = 10000;
+let raycaster = new THREE.Raycaster();
+let mouse = new THREE.Vector2();
+let explodedStars = {};
+let explosionDuration = 1000;  // Explosion duration in milliseconds
 
 function init() {
     setupScene();
@@ -11,7 +13,7 @@ function init() {
     setupRenderer();
     setupStars();
     addEventListeners();
-    animate();  // Start the animation loop
+    animate();
 }
 
 function setupScene() {
@@ -30,29 +32,33 @@ function setupRenderer() {
     document.getElementById('threejs-background').appendChild(renderer.domElement);
 }
 
-// Setup stars using instancing for better performance
 function setupStars() {
     starGeometry = new THREE.BufferGeometry();
-    starPositions = new Float32Array(starCount * 3);  // Store positions
-    starVelocities = new Float32Array(starCount);  // Store velocities for each star
+    starPositions = new Float32Array(starCount * 3);
+    starVelocities = new Float32Array(starCount);
+    starColors = new Float32Array(starCount * 3);  // Store current star colors
+    originalColors = new Float32Array(starCount * 3);  // Store original colors
 
-    let starColors = new Float32Array(starCount * 3);  // Store colors
     for (let i = 0; i < starCount; i++) {
         let i3 = i * 3;
-        // Randomize initial position of each star
         starPositions[i3] = (Math.random() - 0.5) * 6000;
         starPositions[i3 + 1] = (Math.random() - 0.5) * 6000;
         starPositions[i3 + 2] = (Math.random() - 0.5) * 6000;
 
-        // Assign each star a random velocity (faster stars for deeper stars)
+        // Assign random velocity
         starVelocities[i] = 0.02 + Math.random() * 0.1;
 
-        // Set star color, with slight hue variations for each star
+        // Set initial color for each star
         let color = new THREE.Color();
-        color.setHSL(Math.random() * 0.2 + 0.6, 0.7, Math.random() * 0.5 + 0.5);
+        color.setHSL(Math.random() * 0.5 + 0.5, 0.7, Math.random() * 0.5 + 0.5);
         starColors[i3] = color.r;
         starColors[i3 + 1] = color.g;
         starColors[i3 + 2] = color.b;
+
+        // Save the original color for later use
+        originalColors[i3] = color.r;
+        originalColors[i3 + 1] = color.g;
+        originalColors[i3 + 2] = color.b;
     }
 
     starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
@@ -61,11 +67,11 @@ function setupStars() {
     starMaterial = new THREE.PointsMaterial({
         size: 2.5,
         vertexColors: true,
-        sizeAttenuation: true,  // Star size affected by depth
+        sizeAttenuation: true,
         transparent: true,
         opacity: 0.9,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,  // Additive blending for glowing effect
+        blending: THREE.AdditiveBlending
     });
 
     stars = new THREE.Points(starGeometry, starMaterial);
@@ -74,11 +80,9 @@ function setupStars() {
 
 function animate() {
     requestAnimationFrame(animate);
-
-    updateStars();  // Move and update stars
-    smoothParallax();  // Parallax effect with mouse
-    checkForStarHover();  // Check if the mouse is hovering over a star
-
+    updateStars();
+    smoothParallax();
+    checkForStarHover();
     renderer.render(scene, camera);
 }
 
@@ -86,30 +90,50 @@ function updateStars() {
     for (let i = 0; i < starCount; i++) {
         let i3 = i * 3;
 
-        // If the star is not exploded, move it along the Z-axis (normal movement)
         if (!explodedStars[i]) {
-            starPositions[i3 + 2] += starVelocities[i];  // Move stars along the Z-axis
+            // Normal star behavior (drifting through space)
+            starPositions[i3 + 2] += starVelocities[i];
 
-            // Reset stars that go too far in depth to simulate looping
             if (starPositions[i3 + 2] > 1500) {
                 starPositions[i3 + 2] = -1500;
                 starPositions[i3] = (Math.random() - 0.5) * 6000;
                 starPositions[i3 + 1] = (Math.random() - 0.5) * 6000;
             }
         } else {
-            // If the star is exploded, apply explosion velocity
-            starPositions[i3] += explodedStars[i].vx;
-            starPositions[i3 + 1] += explodedStars[i].vy;
-            starPositions[i3 + 2] += explodedStars[i].vz;
+            let explosionData = explodedStars[i];
 
-            // If the star moves too far away, reset it
-            if (Math.abs(starPositions[i3]) > 3000 || Math.abs(starPositions[i3 + 1]) > 3000 || Math.abs(starPositions[i3 + 2]) > 3000) {
+            // Move exploded star particles
+            starPositions[i3] += explosionData.vx;
+            starPositions[i3 + 1] += explosionData.vy;
+            starPositions[i3 + 2] += explosionData.vz;
+
+            // Gradually reduce velocity (deceleration)
+            explosionData.vx *= 0.98;
+            explosionData.vy *= 0.98;
+            explosionData.vz *= 0.98;
+
+            // Interpolate color from explosion color back to original
+            let elapsedTime = Date.now() - explosionData.startTime;
+            let progress = elapsedTime / explosionDuration;
+
+            starColors[i3] = THREE.MathUtils.lerp(explosionData.explosionColor.r, originalColors[i3], progress);
+            starColors[i3 + 1] = THREE.MathUtils.lerp(explosionData.explosionColor.g, originalColors[i3 + 1], progress);
+            starColors[i3 + 2] = THREE.MathUtils.lerp(explosionData.explosionColor.b, originalColors[i3 + 2], progress);
+
+            // Fade the size and opacity over time
+            explosionData.scale *= 0.95;
+            starMaterial.size = explosionData.scale;
+            starMaterial.opacity = explosionData.scale / 5;
+
+            // Reset star after explosion duration
+            if (elapsedTime > explosionDuration) {
                 resetStar(i);
             }
         }
     }
 
-    stars.geometry.attributes.position.needsUpdate = true;  // Inform Three.js of position changes
+    stars.geometry.attributes.position.needsUpdate = true;
+    stars.geometry.attributes.color.needsUpdate = true;
 }
 
 // Smooth parallax effect based on mouse movement
@@ -117,34 +141,44 @@ function smoothParallax() {
     cameraX += (mouseX - cameraX) * 0.05;
     cameraY += (-mouseY - cameraY) * 0.05;
 
-    camera.position.x = cameraX * 0.02;  // Apply parallax effect
+    camera.position.x = cameraX * 0.02;
     camera.position.y = cameraY * 0.02;
 }
 
 // Check if the mouse is hovering over any stars and trigger explosion
 function checkForStarHover() {
-    raycaster.setFromCamera(mouse, camera);  // Cast a ray from the camera to the mouse position
+    raycaster.setFromCamera(mouse, camera);
 
-    // Calculate objects intersected by the ray
     let intersects = raycaster.intersectObject(stars);
 
     if (intersects.length > 0) {
-        // Get the index of the intersected star
         let index = intersects[0].index;
         explodeStar(index);
     }
 }
 
-// Explode a star by giving it a random velocity
+// Explode a star by giving it a random velocity and changing its color
 function explodeStar(index) {
     if (!explodedStars[index]) {
         let i3 = index * 3;
-        // Generate random velocities for the explosion
+
+        // Set random velocities for the explosion
         explodedStars[index] = {
-            vx: (Math.random() - 0.5) * 20,  // Random X velocity
-            vy: (Math.random() - 0.5) * 20,  // Random Y velocity
-            vz: (Math.random() - 0.5) * 20   // Random Z velocity
+            vx: (Math.random() - 0.5) * 50,
+            vy: (Math.random() - 0.5) * 50,
+            vz: (Math.random() - 0.5) * 50,
+            scale: 5,  // Start with a larger size for explosion
+            startTime: Date.now(),
+            explosionColor: new THREE.Color(1, 0.8, 0.5)  // Explosion color (e.g., bright orange)
         };
+
+        // Immediately set the star's color to the explosion color
+        starColors[i3] = explodedStars[index].explosionColor.r;
+        starColors[i3 + 1] = explodedStars[index].explosionColor.g;
+        starColors[i3 + 2] = explodedStars[index].explosionColor.b;
+
+        starMaterial.size = explodedStars[index].scale;
+        starMaterial.opacity = 1.0;
     }
 }
 
@@ -153,10 +187,18 @@ function resetStar(index) {
     let i3 = index * 3;
     starPositions[i3] = (Math.random() - 0.5) * 6000;
     starPositions[i3 + 1] = (Math.random() - 0.5) * 6000;
-    starPositions[i3 + 2] = -1500;  // Place it at the far back to give an illusion of it coming back from the distance
+    starPositions[i3 + 2] = -1500;
 
-    // Remove it from the exploded stars list
     delete explodedStars[index];
+
+    // Restore original size and opacity
+    starMaterial.size = 2.5;
+    starMaterial.opacity = 0.9;
+
+    // Reset color back to the original color
+    starColors[i3] = originalColors[i3];
+    starColors[i3 + 1] = originalColors[i3 + 1];
+    starColors[i3 + 2] = originalColors[i3 + 2];
 }
 
 // Update mouse coordinates for raycasting
@@ -164,7 +206,6 @@ function onDocumentMouseMove(event) {
     mouseX = (event.clientX - window.innerWidth / 2);
     mouseY = (event.clientY - window.innerHeight / 2);
 
-    // Update normalized mouse position for raycasting
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 }
