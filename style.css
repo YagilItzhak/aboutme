@@ -200,8 +200,14 @@ section p {
     text-align: center;
 }
 
+.honors{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
 /* Project & Honors Grid */
-.project-grid, .skills-grid, .honors, .article-grid {
+.project-grid, .skills-grid, .article-grid {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
