@@ -225,10 +225,13 @@ section p {
 }
 
 /* Hover effect for the cards */
-.project-item:hover, .honor-item:hover, .article-item:hover, .skill-item:hover {
-    transform: scale(1.05); /* Scale up the card */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Enhance the shadow effect */
+@media (min-width: 768px) {
+    .project-item:hover, .honor-item:hover, .article-item:hover, .skill-item:hover {
+        transform: scale(1.05); /* Scale up the card */
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Enhance the shadow effect */
+    }
 }
+
 
 .project-item img, .article-item img {
     max-width: 100%;
