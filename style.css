@@ -217,31 +217,8 @@ section p {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Enhance the shadow effect */
 }
 
-.project-item h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.project-item p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-.project-item .btn {
-    display: inline-block;
-}
-
-/* Honors & Achievements Section */
-.honors {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin: 2rem auto;
-    width: 80%;
-    background-color: #fff;
-    padding: 4rem 0;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+.project-item img, .article-item img {
+    max-width: 100%;
     border-radius: 8px;
     margin-bottom: 1rem;
     transition: transform 0.3s ease; /* Add transition to the image */
