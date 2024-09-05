@@ -13,6 +13,10 @@
     --box-shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+::selection {
+    background-color: yellow;
+}
+
 /* Universal Styles */
 * {
     line-height: 1.5;
