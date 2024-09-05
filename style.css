@@ -237,23 +237,31 @@ a:hover {
 }
 
 .honor-item {
-    flex: 1;
+    flex: 1 1 30%;
     background-color: #f9f9f9;
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    min-height: 300px; /* Consistent height for article cards */
+    min-height: 250px; /* Consistent height for honor cards */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.honor-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .honor-item h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
+    color: #3a6186;
 }
 
 .honor-item p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    color: #333;
 }
 
 .honor-item .btn {
