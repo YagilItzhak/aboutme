@@ -62,6 +62,13 @@ a:hover {
     text-decoration: none;
 }
 
+.profile-picture {
+    max-width: 150px;
+    border-radius: 50%;
+    display: block;
+    margin: 2rem auto;
+}
+
 .nav-menu {
     list-style: none;
     display: flex;
