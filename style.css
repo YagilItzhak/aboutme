@@ -1,19 +1,34 @@
+/* Define CSS Variables */
+:root {
+    --primary-color: #378aae;
+    --secondary-color: #3a6186;
+    --accent-color: #15ef40;
+    --hover-color: #FF5733;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --white-color: #fff;
+    --font-family: 'Arial', sans-serif;
+    --header-height: 60px;
+    --box-shadow-light: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    --box-shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Universal Styles */
 * {
     line-height: 1.5;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-family);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 a {
-    color: #3a6186;
+    color: var(--secondary-color);
     text-decoration: none;
 }
 
@@ -23,12 +38,12 @@ a:hover {
 
 /* Navigation */
 .navigation {
-    background-color: #378aae;
+    background-color: var(--primary-color);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-medium);
 }
 
 .nav-container {
@@ -41,7 +56,7 @@ a:hover {
 }
 
 .logo a {
-    color: white;
+    color: var(--white-color);
     font-size: 1.8em;
     font-weight: bold;
     text-decoration: none;
@@ -58,17 +73,18 @@ a:hover {
 }
 
 .nav-menu li a {
-    color: white;
+    color: var(--white-color);
     font-size: 1.2em;
     padding: 1rem;
     transition: background-color 0.3s ease;
 }
 
 .nav-menu li a:hover {
-    background-color: #FF5733;
+    background-color: var(--hover-color);
     border-radius: 7px;
 }
 
+/* Mobile Menu */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -78,12 +94,11 @@ a:hover {
 .menu-toggle .bar {
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: var(--white-color);
     margin: 5px 0;
     transition: 0.4s;
 }
 
-/* Mobile Menu */
 .menu-toggle.is-active .bar:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -99,10 +114,10 @@ a:hover {
 .nav-menu.active {
     display: block;
     position: absolute;
-    top: 60px;
+    top: var(--header-height);
     left: 0;
     width: 100%;
-    background-color: #378aae;
+    background-color: var(--primary-color);
     padding: 0;
 }
 
@@ -119,11 +134,11 @@ a:hover {
 /* Header */
 .header {
     background: transparent;
-    color: white;
+    color: var(--white-color);
     text-align: center;
     padding: 6rem 0;
     position: relative;
-    margin-top: 60px; /* Adjusted for fixed navigation */
+    margin-top: var(--header-height); /* Adjusted for fixed navigation */
 }
 
 .header-content {
@@ -144,8 +159,8 @@ a:hover {
 }
 
 .btn {
-    background-color: #15ef40;
-    color: #333;
+    background-color: var(--accent-color);
+    color: var(--text-color);
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
     font-size: 1.1rem;
@@ -156,56 +171,50 @@ a:hover {
     background-color: #3498db;
 }
 
-/* About Section */
-.about, .projects, .articles, .honors, .skills, .contact-info {
+/* Section Styling */
+section {
     padding: 4rem 0;
-    background-color: #fff;
+    background-color: var(--white-color);
     margin: 2rem auto;
     width: 80%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-light);
     border-radius: 8px;
 }
 
-.about h2, .projects h2, .articles h2, .honors h2, .skills h2, .contact-info h2 {
+section h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
 }
 
-.about p, .projects p, .articles p, .honors p, .skills p, .contact-info p {
+section p {
     font-size: 1.2rem;
     line-height: 1.8;
     text-align: center;
 }
 
-.profile-picture {
-    max-width: 150px;
-    border-radius: 50%;
-    display: block;
-    margin: 2rem auto;
-}
-
-/* Projects Section */
-.project-grid {
+/* Project & Honors Grid */
+.project-grid, .skills-grid, .honors, .article-grid {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
 }
 
-.project-item {
+.project-item, .honor-item, .article-item, .skill-item {
     flex: 1;
     background-color: #f9f9f9;
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    min-height: 300px; /* Consistent height for all project cards */
+    box-shadow: var(--box-shadow-light);
+    min-height: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-item img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+/* Hover effect for the cards */
+.project-item:hover, .honor-item:hover, .article-item:hover, .skill-item:hover {
+    transform: scale(1.05); /* Scale up the card */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Enhance the shadow effect */
 }
 
 .project-item h3 {
@@ -234,136 +243,28 @@ a:hover {
     padding: 4rem 0;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease; /* Add transition to the image */
 }
 
-.honor-item {
-    flex: 1;
-    background-color: #f9f9f9;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    min-height: 300px; /* Consistent height for article cards */
+.project-item:hover img, .article-item:hover img {
+    transform: scale(1.05); /* Slightly enlarge the image */
 }
 
-.honor-item h3 {
+.project-item h3, .honor-item h3, .article-item h3, .skill-item h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
 }
 
-.honor-item p {
+.project-item p, .honor-item p, .article-item p, .skill-item p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-}
-
-.honor-item .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    background-color: #15ef40;
-    color: #333;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-}
-
-.honor-item .btn:hover {
-    background-color: #3498db;
-}
-
-/* Articles Section */
-.articles {
-    padding: 4rem 0;
-    background-color: #fff;
-    margin: 2rem auto;
-    width: 80%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.article-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.article-item {
-    flex: 1;
-    background-color: #f9f9f9;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    min-height: 300px; /* Consistent height for article cards */
-}
-
-.article-item h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.article-item p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-.article-item .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    background-color: #15ef40;
-    color: #333;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-}
-
-.article-item .btn:hover {
-    background-color: #3498db;
-}
-
-/* Skills Section */
-.skills-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    text-align: center;
-}
-
-.skill-item {
-    flex: 1;
-    background-color: #f9f9f9;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    min-height: 300px; /* Consistent height for skill cards */
-}
-
-.skill-item h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.skill-item p {
-    font-size: 1.1rem;
-}
-
-/* Contact Section */
-.contact-info {
-    text-align: center;
-}
-
-.contact-info p a {
-    display: inline-block;
-    margin: 0 0.5rem;
-    font-size: 1.2rem;
 }
 
 /* Footer */
 .footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--text-color);
+    color: var(--white-color);
     text-align: center;
     padding: 1rem 0;
     font-size: 1rem;
@@ -379,7 +280,7 @@ a:hover {
     z-index: -1;
 }
 
-/* Responsive Design */
+/* Media Queries */
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -399,19 +300,11 @@ a:hover {
         font-size: 1.2rem;
     }
 
-    .about, .projects, .articles, .honors, .skills, .contact-info {
+    section {
         width: 95%;
     }
 
     .project-grid, .skills-grid, .honors, .article-grid {
         flex-direction: column;
-    }
-
-    .articles {
-        width: 95%;
-    }
-
-    .article-list {
-        gap: 1rem;
     }
 }
