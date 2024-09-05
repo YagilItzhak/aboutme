@@ -1,0 +1,44 @@
+<htmc-define>
+    <!-- Button Component -->
+    <component name="my-button" attributes="href">
+        <a href="${href}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700">
+            <slot></slot>
+        </a>
+    </component>
+
+    <!-- Honor Item with Certificate Link -->
+    <component name="honor-item-with-certificate" attributes="title description href">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-xl font-bold mb-4">${title}</h3>
+            <p class="mb-4">${description}</p>
+            <my-button href="${href}">View Certificate</my-button>
+        </div>
+    </component>
+
+    <!-- Honor Item without Certificate Link -->
+    <component name="honor-item-no-certificate" attributes="title description">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-xl font-bold mb-4">${title}</h3>
+            <p class="mb-4">${description}</p>
+        </div>
+    </component>
+
+    <!-- Project Card for GitHub Projects -->
+    <component name="project-card-github" attributes="title description href">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-xl font-bold mb-4">${title}</h3>
+            <p class="mb-4">${description}</p>
+            <my-button href="${href}">View on GitHub</my-button>
+        </div>
+    </component>
+
+    <!-- Project Card for Scored Projects -->
+    <component name="project-card-score" attributes="title description score">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-xl font-bold mb-4">${title}</h3>
+            <p class="mb-4">${description}</p>
+            <p class="text-lg font-semibold mt-4">Score: ${score}</p>
+        </div>
+    </component>
+</htmc-define>
+
