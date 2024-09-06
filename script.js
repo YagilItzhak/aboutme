@@ -16,7 +16,7 @@ const EXPLOSION_COLOR = new THREE.Color(1, 0.8, 0.5);  // Bright orange
 const PARALLAX_SMOOTHING = 0.05;
 const EXPLOSION_DECAY = 0.95;
 const EXPLOSION_DURATION = 1000;  // In milliseconds
-const FALLING_STAR_PROBABILITY = 0.0001;  // Probability of a star becoming a falling star
+const FALLING_STAR_PROBABILITY = 0.00001;  // Probability of a star becoming a falling star
 const FALLING_STAR_SPEED = 3;             // Speed of falling stars
 const FALLING_STAR_COLOR = new THREE.Color(1, 1, 1);  // White color for falling stars
 
