@@ -32,7 +32,7 @@
         <section id="experience" class="mb-8">
             <h2 class="text-xl font-semibold">Relevant Experience</h2>
             <htmc-define>
-                <component name="experience-item" attributes="title company date">
+                <component name="experience-item" static-attributes="title company date">
                     <div class="mb-4">
                         <h3 class="font-bold">${title}</h3>
                         <p><strong>${company}</strong> - ${date}</p>
@@ -70,7 +70,7 @@
         <section id="projects" class="mb-8">
             <h2 class="text-xl font-semibold">Projects</h2>
             <htmc-define>
-                <component name="project-item" attributes="title date">
+                <component name="project-item" static-attributes="title date">
                     <div class="mb-4">
                         <h3 class="font-bold">${title}</h3>
                         <p><em>${date}</em></p>
@@ -80,7 +80,7 @@
             </htmc-define>
 
             <htmc-define>
-                <component name="project-item-with-grade" attributes="title date grade">
+                <component name="project-item-with-grade" static-attributes="title date grade">
                     <div class="mb-4">
                         <h3 class="font-bold">${title}</h3>
                         <p><em>${date}</em></p>
@@ -162,7 +162,7 @@
         <section id="education" class="mb-8">
             <h2 class="text-xl font-semibold">Education</h2>
             <htmc-define>
-                <component name="education-item" attributes="school degree date">
+                <component name="education-item" static-attributes="school degree date">
                     <div class="mb-4">
                         <h3 class="font-bold">${school}</h3>
                         <p><strong>${degree}</strong></p>
