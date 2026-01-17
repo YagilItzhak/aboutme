@@ -1,0 +1,75 @@
+{
+  "starField": {
+    "countDesktop": 5000,
+    "countMobile": 3000,
+    "size": 2.5,
+    "opacity": 0.9,
+    "fieldSize": 6000,
+    "speedMin": 0.02,
+    "speedRange": 0.1,
+    "velocityMultiplier": 60
+  },
+  "camera": {
+    "fov": 75,
+    "near": 0.1,
+    "far": 1500,
+    "initialZ": 1000,
+    "parallaxFactor": 0.02
+  },
+  "explosion": {
+    "speed": 50,
+    "size": 5,
+    "opacityDivisor": 5,
+    "velocityDecay": 0.98,
+    "scaleDecay": 0.95,
+    "durationMs": 1000,
+    "color": {
+      "r": 0.2,
+      "g": 1.0,
+      "b": 0.4
+    }
+  },
+  "fallingStar": {
+    "probability": 0.00002,
+    "speed": 3,
+    "color": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0
+    }
+  },
+  "parallax": {
+    "smoothing": 0.05
+  },
+  "raycasting": {
+    "throttleMs": 100,
+    "threshold": 5
+  },
+  "performance": {
+    "pixelRatioMaxDesktop": 2,
+    "pixelRatioMaxMobile": 1,
+    "mobileUpdateInterval": 2,
+    "desktopUpdateInterval": 1,
+    "resizeDebounceMs": 250
+  },
+  "explosionData": {
+    "indices": {
+      "vx": 0,
+      "vy": 1,
+      "vz": 2,
+      "scale": 3,
+      "startTime": 4,
+      "colorR": 5,
+      "colorG": 6,
+      "colorB": 7
+    },
+    "size": 8
+  },
+  "starColor": {
+    "hueMin": 0.5,
+    "hueRange": 0.3,
+    "saturation": 0.8,
+    "lightnessMin": 0.6,
+    "lightnessRange": 0.4
+  }
+}
