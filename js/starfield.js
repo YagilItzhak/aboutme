@@ -7,19 +7,84 @@
  * - Mouse parallax camera
  * - Raycast hover explosions (desktop only, reduced-motion aware)
  * - Occasional falling stars (desktop only, reduced-motion aware)
- *
- * Assumptions:
- * - `THREE` is available globally
- * - An element with id `threejs-background` exists
- * - `config.json` matches the expected shape used below
  */
 (async () => {
-  /** @type {string} */
-  const CONFIG_URL = 'config.json';
-
-  /** @type {StarConfig|null} */
-  const config = await loadConfig(CONFIG_URL);
-  if (!config) return;
+  /** @type {StarConfig} */
+  const config = {
+      "starField": {
+        "countDesktop": 5000,
+        "countMobile": 3000,
+        "size": 2.5,
+        "opacity": 0.9,
+        "fieldSize": 6000,
+        "speedMin": 0.02,
+        "speedRange": 0.1,
+        "velocityMultiplier": 60
+      },
+      "camera": {
+        "fov": 75,
+        "near": 0.1,
+        "far": 1500,
+        "initialZ": 1000,
+        "parallaxFactor": 0.02
+      },
+      "explosion": {
+        "speed": 50,
+        "size": 5,
+        "opacityDivisor": 5,
+        "velocityDecay": 0.98,
+        "scaleDecay": 0.95,
+        "durationMs": 1000,
+        "color": {
+          "r": 0.2,
+          "g": 1.0,
+          "b": 0.4
+        }
+      },
+      "fallingStar": {
+        "probability": 0.00002,
+        "speed": 3,
+        "color": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0
+        }
+      },
+      "parallax": {
+        "smoothing": 0.05
+      },
+      "raycasting": {
+        "throttleMs": 100,
+        "threshold": 5
+      },
+      "performance": {
+        "pixelRatioMaxDesktop": 2,
+        "pixelRatioMaxMobile": 1,
+        "mobileUpdateInterval": 2,
+        "desktopUpdateInterval": 1,
+        "resizeDebounceMs": 250
+      },
+      "explosionData": {
+        "indices": {
+          "vx": 0,
+          "vy": 1,
+          "vz": 2,
+          "scale": 3,
+          "startTime": 4,
+          "colorR": 5,
+          "colorG": 6,
+          "colorB": 7
+        },
+        "size": 8
+      },
+      "starColor": {
+        "hueMin": 0.5,
+        "hueRange": 0.3,
+        "saturation": 0.8,
+        "lightnessMin": 0.6,
+        "lightnessRange": 0.4
+      }
+    };
 
   /** @type {Env} */
   const env = detectEnvironment(config);
@@ -30,22 +95,6 @@
   initThree(state, config, env);
   addEventListeners(state, config, env);
   startLoop(state, config, env);
-
-  /**
-   * Loads configuration JSON.
-   * @param {string} url
-   * @returns {Promise<StarConfig|null>}
-   */
-  async function loadConfig(url) {
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return /** @type {StarConfig} */ (await res.json());
-    } catch (err) {
-      console.error('Failed to load config.json:', err);
-      return null;
-    }
-  }
 
   /**
    * Detects device and motion preferences.
@@ -331,11 +380,14 @@
     const sizes = /** @type {Float32Array} */ (state.geometry.attributes.size.array);
     const opacities = /** @type {Float32Array} */ (state.geometry.attributes.opacity.array);
 
+    let visualsDirty = false;
+
     for (let i = 0; i < env.starCount; i += step) {
       const p = i * 3;
 
       if (state.falling[i]) {
         updateFallingStar(state, config, i, p);
+        visualsDirty = true; // Color changes
         continue;
       }
 
@@ -345,9 +397,16 @@
       }
 
       updateExplodingStar(state, config, i, p, sizes, opacities, now);
+      visualsDirty = true; // Size/Opacity/Color changes
     }
 
-    markGeometryDirty(state);
+    state.geometry.attributes.position.needsUpdate = true;
+    
+    if (visualsDirty) {
+        state.geometry.attributes.color.needsUpdate = true;
+        state.geometry.attributes.size.needsUpdate = true;
+        state.geometry.attributes.opacity.needsUpdate = true;
+    }
   }
 
   /**
