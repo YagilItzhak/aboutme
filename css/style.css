@@ -259,6 +259,10 @@ a:hover {
 /* ==========================================
    BUTTONS
    ========================================== */
+.slide-btn {
+    display: none;
+}
+
 .btn {
     padding: 1rem 2rem;
     border-radius: 50px;
