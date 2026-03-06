@@ -1,0 +1,60 @@
+/* ==========================================
+   GLOBAL RESET & BASE STYLES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background: var(--primary);
+    color: var(--bg);
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    /* Moved global background here */
+}
+
+body {
+    font-family: var(--font);
+    background: transparent;
+    /* Transparent to show stars on canvas */
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all var(--trans);
+    position: relative;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+/* ==========================================
+   CUSTOM SCROLLBAR
+   ========================================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--secondary), var(--primary));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, var(--primary), var(--accent));
+}

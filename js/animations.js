@@ -1,18 +1,34 @@
 /**
- * Typing Effect for Hero Section
+ * Handles the typing animation effect for the Hero section.
  */
 document.addEventListener('DOMContentLoaded', () => {
+    /** @type {HTMLElement|null} The element where text is typed. */
     const textElement = document.getElementById('typing-text');
+    
+    /** @type {string[]} Array of phrases to cycle through. */
     const phrases = [
         "Full-Stack Developer",
         "Cybersecurity Enthusiast",
         "System Programmer"
     ];
+    
+    /** @type {number} Current index in the phrases array. */
     let phraseIndex = 0;
+    
+    /** @type {number} Current character index being typed or deleted. */
     let charIndex = 0;
+    
+    /** @type {boolean} Flag indicating whether the effect is currently deleting text. */
     let isDeleting = false;
+    
+    /** @type {number} Current speed of the typing effect in milliseconds. */
     let typeSpeed = 100;
 
+    /**
+     * Executes a single step of the typing or deleting animation loop.
+     * Recursively calls itself via setTimeout.
+     * @returns {void}
+     */
     function type() {
         if (!textElement) return;
 

@@ -1,0 +1,57 @@
+/* ==========================================
+   CSS VARIABLES
+   ========================================== */
+:root {
+    --primary: #00d4ff;
+    --secondary: #3a6186;
+    --accent: #15ef40;
+    /* Keeping original green accent as requested/implied style */
+    --accent-glow: rgba(21, 239, 64, 0.6);
+    --bg: #05081c;
+    /* Darker, richer blue */
+    --card-bg: rgba(16, 20, 40, 0.7);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --white: #ffffff;
+    --font: 'Outfit', 'Segoe UI', sans-serif;
+    /* New font */
+    --header-h: 80px;
+    --shadow-light: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 20px 40px -5px rgba(0, 212, 255, 0.15);
+    --trans: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 12px;
+}
+
+[data-theme="light"] {
+    --primary: #0077b6;
+    /* darker blue for better contrast */
+    --secondary: #0096c7;
+    --accent: #2a9d8f;
+    --accent-glow: rgba(42, 157, 143, 0.6);
+    --bg: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --text: #1e293b;
+    --text-dim: #64748b;
+    --white: #0f172a;
+    /* inverted for text contrast where var(--white) was used for headings */
+    --shadow-light: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 20px 40px -5px rgba(0, 119, 182, 0.15);
+}
+
+[data-theme="terminal"] {
+    --primary: #00ff00;
+    --secondary: #008800;
+    --accent: #00ff00;
+    --accent-glow: rgba(0, 255, 0, 0.6);
+    --bg: #000000;
+    --card-bg: rgba(0, 40, 0, 0.2);
+    --card-border: rgba(0, 255, 0, 0.3);
+    --text: #00ff00;
+    --text-dim: #00aa00;
+    --white: #00ff00;
+    --shadow-light: 0 8px 32px 0 rgba(0, 255, 0, 0.1);
+    --shadow-hover: 0 20px 40px -5px rgba(0, 255, 0, 0.3);
+    --font: 'Courier New', Courier, monospace;
+}

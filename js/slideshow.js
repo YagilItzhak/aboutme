@@ -4,13 +4,14 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    /** @type {NodeListOf<HTMLElement>} All grid elements that need horizontal scrolling on mobile. */
     const grids = document.querySelectorAll('.project-grid, .skills-grid, .article-list, .honors-grid');
     
     // Only run on mobile/tablet or small screens
     if (window.innerWidth > 768) return;
 
     grids.forEach(grid => {
-        // Create wrapper
+        /** @type {HTMLDivElement} Wrapper to contain grid and absolute positioned controls. */
         const wrapper = document.createElement('div');
         wrapper.className = 'slideshow-wrapper';
         
@@ -19,11 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapper.appendChild(grid);
 
         // Create controls
+        /** @type {HTMLButtonElement} Button to scroll left. */
         const prevBtn = document.createElement('button');
         prevBtn.className = 'slide-btn prev';
         prevBtn.innerHTML = '&#10094;'; // Left arrow
         prevBtn.ariaLabel = "Previous Slide";
 
+        /** @type {HTMLButtonElement} Button to scroll right. */
         const nextBtn = document.createElement('button');
         nextBtn.className = 'slide-btn next';
         nextBtn.innerHTML = '&#10095;'; // Right arrow

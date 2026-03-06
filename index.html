@@ -36,9 +36,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <script src="js/starfield.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/slideshow.js" defer></script>
+  <script src="js/easter_eggs.js" defer></script>
 </head>
 
 <body>
+  <!-- ==========================================
+         THEME INITIALIZATION
+         ========================================== -->
+  <script src="js/theme.js"></script>
+
   <!-- ==========================================
          NAVIGATION
          ========================================== -->
@@ -65,6 +76,9 @@
           <a href="https://www.linkedin.com/in/yagil-itzhak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </li>
       </ul>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Light/Dark Theme">
+        <span class="theme-icon">☀️</span>
+      </button>
     </div>
   </nav>
 
@@ -88,6 +102,12 @@
          THREE.JS BACKGROUND
          ========================================== -->
   <div id="threejs-background" aria-hidden="true"></div>
+  <div class="birds-container" aria-hidden="true">
+    <div class="bird"></div>
+    <div class="bird"></div>
+    <div class="bird"></div>
+    <div class="bird"></div>
+  </div>
 
   <!-- ==========================================
          MAIN CONTENT
@@ -100,8 +120,8 @@
       <div class="content">
         <h2 id="about-heading">About Me</h2>
         <div class="about-container">
-          <img src="./image.png" alt="Yagil Itzhak - Software Developer" class="profile-picture" loading="lazy"
-            width="200" height="200" />
+          <img src="./image.png" alt="Yagil Itzhak - Software Developer" class="profile-picture" width="200"
+            height="200" />
           <p>
             I'm Yagil, a dedicated Software Developer from Israel with a passion
             for coding and a relentless pursuit of knowledge. My expertise spans
@@ -318,14 +338,6 @@
          SCROLL TO TOP BUTTON
          ========================================== -->
   <div class="scroll-top" id="scrollTop" role="button" aria-label="Scroll to top" tabindex="0"></div>
-
-  <!-- ==========================================
-         JAVASCRIPT
-         ========================================== -->
-  <script src="js/starfield.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/animations.js"></script>
-  <script src="js/slideshow.js"></script>
 </body>
 
 </html>
